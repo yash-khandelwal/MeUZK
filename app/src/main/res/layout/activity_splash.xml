@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:background="@drawable/bg_gradient"
+        xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <TextView android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:id="@+id/text_name"
+              android:text="MeUZK"
+              android:textStyle="bold"
+              android:layout_above="@id/text_line"
+              android:layout_marginBottom="5dp"
+              android:layout_centerHorizontal="true"
+              android:layout_centerVertical="true"
+              android:textColor="#bbffffff"
+              android:textSize="50sp"
+    />
+    <TextView android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:id="@+id/text_line"
+              android:text="MUSIC PLAYER"
+              android:textStyle="bold"
+              android:layout_centerHorizontal="true"
+              android:layout_centerVertical="true"
+              android:textColor="#bbffffff"
+              android:textSize="22sp"
+    />
+
+</RelativeLayout>

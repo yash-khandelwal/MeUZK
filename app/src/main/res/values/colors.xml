@@ -5,5 +5,7 @@
     <color name="colorAccent">#D81B60</color>
     <color name="endColor">#9b2a58</color>
     <color name="startColor">#00032a</color>
+    <color name="textColor">#212121</color>
+    <color name="backgroundColor">#eeeeee</color>
 
 </resources>

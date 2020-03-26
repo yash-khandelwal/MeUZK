@@ -1,7 +1,6 @@
-package com.example.meuzk
+package com.example.meuzk.activities
 
 import android.Manifest
-import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -10,6 +9,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.support.v4.app.ActivityCompat
 import android.widget.Toast
+import com.example.meuzk.R
 
 class SplashActivity : AppCompatActivity() {
 

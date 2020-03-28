@@ -1,14 +1,170 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
              android:layout_width="match_parent"
              android:layout_height="match_parent"
-             tools:context=".fragments.SongPlayingFragment">
+              android:orientation="vertical"
+              >
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="@string/hello_blank_fragment"/>
+            android:layout_weight="1"
+    >
 
-</FrameLayout>
+    </LinearLayout>
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#9d2a58"
+    >
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/information_song"
+            >
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/songTitle"
+                        android:layout_centerHorizontal="true"
+                        android:text="Castle of glass"
+                        android:textColor="#ffffff"
+                        android:textSize="21sp"
+                        android:padding="5dp"
+                        android:textStyle="bold"
+                        android:ellipsize="marquee"
+                        android:singleLine="true"
+                />
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/songArtist"
+                        android:layout_centerHorizontal="true"
+                        android:text="Linkin Park"
+                        android:textColor="#eeeeee"
+                        android:layout_below="@id/songTitle"
+                        android:textSize="15sp"
+                        android:ellipsize="marquee"
+                        android:singleLine="true"
+                />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/seekBarLayout"
+                    android:layout_below="@id/information_song"
+            >
+                <SeekBar
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/seekBar"
+                        android:layout_centerHorizontal="true"
+                />
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/startTime"
+                        android:layout_alignParentLeft="true"
+                        android:layout_below="@id/seekBar"
+                        android:layout_marginLeft="15dp"
+                        android:textColor="#ffffff"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                />
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/endTime"
+                        android:layout_alignParentRight="true"
+                        android:layout_below="@id/seekBar"
+                        android:layout_marginRight="15dp"
+                        android:textColor="#ffffff"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/controlPanel"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginTop="25dp"
+                    android:layout_marginBottom="60dp"
+                    android:layout_below="@id/seekBarLayout"
+            >
+                
+                <ImageButton
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:minWidth="0dp"
+                        android:minHeight="0dp"
+                        android:id="@+id/playPauseButton"
+                        android:background="@drawable/play_icon"
+                        android:layout_centerInParent="true"
+                />
+                
+                <ImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/previousButton"
+                        android:minHeight="0dp"
+                        android:minWidth="0dp"
+                        android:layout_centerVertical="true"
+                        android:layout_toLeftOf="@id/playPauseButton"
+                        android:layout_marginRight="19dp"
+                        android:background="@drawable/play_previous_icon"
+                />
+
+                <ImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/nextButton"
+                        android:minHeight="0dp"
+                        android:minWidth="0dp"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@id/playPauseButton"
+                        android:layout_marginLeft="19dp"
+                        android:background="@drawable/play_next_icon"
+                />
+
+                <ImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/loopButton"
+                        android:minHeight="0dp"
+                        android:minWidth="0dp"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@id/nextButton"
+                        android:layout_marginLeft="20dp"
+                        android:background="@drawable/loop_white_icon"
+                />
+
+                <ImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/shuffleButton"
+                        android:minHeight="0dp"
+                        android:minWidth="0dp"
+                        android:layout_centerVertical="true"
+                        android:layout_toLeftOf="@id/previousButton"
+                        android:layout_marginRight="20dp"
+                        android:background="@drawable/shuffle_white_icon"
+                />
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+    </LinearLayout>
+
+</LinearLayout>

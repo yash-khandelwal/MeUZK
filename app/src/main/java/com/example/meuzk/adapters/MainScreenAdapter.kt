@@ -1,6 +1,8 @@
 package com.example.meuzk.adapters
 
 import android.content.Context
+import android.os.Bundle
+import android.support.v4.app.FragmentActivity
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +12,9 @@ import android.widget.TextView
 import android.widget.Toast
 import com.example.meuzk.R
 import com.example.meuzk.Songs
+import com.example.meuzk.activities.MainActivity
+import com.example.meuzk.fragments.MainScreenFragment
+import com.example.meuzk.fragments.SongPlayingFragment
 import kotlinx.android.synthetic.main.row_custom_mainscreen_adapter.view.*
 
 class MainScreenAdapter(_songDetails: ArrayList<Songs>, _context: Context) :
@@ -43,7 +48,18 @@ class MainScreenAdapter(_songDetails: ArrayList<Songs>, _context: Context) :
         p0.trackTitle?.text = songObject?.songTitle
         p0.trackArtist?.text = songObject?.artist
         p0.contentHolder?.setOnClickListener({
-            Toast.makeText(mContext, "" + songObject?.songTitle + " selected", Toast.LENGTH_SHORT).show()
+            val songPlayingFragment = SongPlayingFragment()
+            var args = Bundle()
+            args.putString("songArtist", songObject?.artist)
+            args.putString("path", songObject?.songData)
+            args.putString("songTitle", songObject?.songTitle)
+            args.putInt("songId", songObject?.songID?.toInt() as Int)
+            args.putInt("songPosition", p1)
+            args.putParcelableArrayList("songData", songDetails)
+            (mContext as FragmentActivity).supportFragmentManager
+                .beginTransaction()
+                .replace(R.id.details_fragment, songPlayingFragment)
+                .commit()
         })
     }
 

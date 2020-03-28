@@ -135,13 +135,32 @@ class SongPlayingFragment : Fragment() {
 
         })
         nextImageButton?.setOnClickListener({
-
+            currentSongHelper?.isPlaying = true
+            if( currentSongHelper?.isShuffle as Boolean){
+                playNext("PlayNextLikeNormalShuffle")
+            }
+            else{
+                playNext("PlayNextNormal")
+            }
         })
         previousImageButton?.setOnClickListener({
-
+            currentSongHelper?.isPlaying = true
+            if( currentSongHelper?.isLoop as Boolean){
+                loopImageButton?.setBackgroundResource(R.drawable.loop_white_icon)
+            }
+            playPrevious()
         })
         loopImageButton?.setOnClickListener({
-
+            if( currentSongHelper?.isLoop as Boolean){
+                currentSongHelper?.isLoop = false
+                loopImageButton?.setBackgroundResource(R.drawable.loop_white_icon)
+            }
+            else{
+                currentSongHelper?.isLoop = true
+                currentSongHelper?.isShuffle = false
+                loopImageButton?.setBackgroundResource(R.drawable.loop_icon)
+                shuffleImageButton?.setBackgroundResource(R.drawable.shuffle_white_icon)
+            }
         })
         playpauseImageButton?.setOnClickListener({
             if (mediaPlayer?.isPlaying as Boolean){
@@ -169,7 +188,44 @@ class SongPlayingFragment : Fragment() {
         if(currentPossition >= fetchSongs!!.size) {
             currentPossition = 0
         }
-        var nextSong = fetchSongs?.get(currentPossition)
+
+        currentSongHelper?.isLoop = false
+
+        val nextSong = fetchSongs?.get(currentPossition)
+        currentSongHelper?.songPath = nextSong?.songData
+        currentSongHelper?.songId = nextSong?.songID as Long
+        currentSongHelper?.currentPosition = currentPossition
+        currentSongHelper?.songTitle = nextSong.songTitle
+        currentSongHelper?.songArtist = nextSong.artist
+
+        mediaPlayer?.reset()
+        try {
+            mediaPlayer?.setDataSource(activity, Uri.parse(currentSongHelper?.songPath))
+            mediaPlayer?.prepare()
+            mediaPlayer?.start()
+        }
+        catch (e: Exception){
+            e.printStackTrace()
+        }
+
+    }
+    fun playPrevious(){
+
+        currentPossition -= 1
+        if(currentPossition < 0){
+            currentPossition = fetchSongs?.size as Int
+        }
+
+        if (currentSongHelper?.isPlaying as Boolean){
+            playpauseImageButton?.setBackgroundResource(R.drawable.pause_icon)
+        }
+        else{
+            playpauseImageButton?.setBackgroundResource(R.drawable.play_icon)
+        }
+
+        currentSongHelper?.isLoop = false
+
+        val nextSong = fetchSongs?.get(currentPossition)
         currentSongHelper?.songPath = nextSong?.songData
         currentSongHelper?.songId = nextSong?.songID as Long
         currentSongHelper?.currentPosition = currentPossition
@@ -187,5 +243,4 @@ class SongPlayingFragment : Fragment() {
         }
 
     }
-
 }
